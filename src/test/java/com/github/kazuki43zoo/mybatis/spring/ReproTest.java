@@ -43,7 +43,7 @@ public class ReproTest {
     public void jdbcTemplateBeforeTimeout() throws InterruptedException {
         try (AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(JdbcTemplateDataSourceContext.class)) {
             TransactionalService service = ctx.getBean(TransactionalService.class);
-            service.execute("jdbc1", 0, 0);
+            service.execute("jdbcTemplateBeforeTimeout", 0, 0);
         }
     }
 
@@ -51,7 +51,7 @@ public class ReproTest {
     public void jdbcTemplateAfterTimeout() throws InterruptedException {
         try (AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(JdbcTemplateDataSourceContext.class)) {
             TransactionalService service = ctx.getBean(TransactionalService.class);
-            service.execute("jdbc2", 3, 0);
+            service.execute("jdbcTemplateAfterTimeout", 3, 0);
         }
     }
 
