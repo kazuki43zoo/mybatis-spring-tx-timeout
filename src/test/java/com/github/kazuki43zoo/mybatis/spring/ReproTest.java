@@ -32,7 +32,7 @@ public class ReproTest {
         }
     }
 
-    @Test(expected = MyBatisSystemException.class)
+    @Test(expected = TransactionException.class)
     public void mybatisAfterTimeout() throws InterruptedException {
         try (AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(MyBatisDataSourceContext.class)) {
             TransactionalService service = ctx.getBean(TransactionalService.class);
@@ -48,7 +48,7 @@ public class ReproTest {
         }
     }
 
-    @Test(expected = TransactionException.class)
+    @Test (expected = TransactionException.class)
     public void jdbcTemplateAfterTimeout() throws InterruptedException {
         try (AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(JdbcTemplateDataSourceContext.class)) {
             TransactionalService service = ctx.getBean(TransactionalService.class);
