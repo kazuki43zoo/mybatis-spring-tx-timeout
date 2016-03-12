@@ -2,6 +2,7 @@ package com.github.kazuki43zoo.mybatis.spring;
 
 import org.apache.ibatis.annotations.Select;
 import org.junit.Test;
+import org.mybatis.spring.MyBatisSystemException;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -31,7 +32,7 @@ public class ReproTest {
         }
     }
 
-    @Test(expected = TransactionException.class)
+    @Test(expected = MyBatisSystemException.class)
     public void mybatisAfterTimeout() throws InterruptedException {
         try (AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(MyBatisDataSourceContext.class)) {
             TransactionalService service = ctx.getBean(TransactionalService.class);
